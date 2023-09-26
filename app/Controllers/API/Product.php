@@ -68,15 +68,8 @@ class Product extends ResourceController
 
 
         } catch (\Throwable $th) {
-            
-            $messageError = $th->getMessage();
 
-            if(strpos($th->getMessage(),'foreign key') !== false){
-
-                $messageError = 'El id de la categoría no existe';
-
-            }
-           return $this->failServerError($messageError);
+           return $this->failServerError($th->getMessage());
         }
     }
 

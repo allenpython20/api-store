@@ -28,16 +28,23 @@ class ProductModel extends Model
 		'descripcion' => 'required',
 		'precio' => 'required',
 		'stock' => 'required',
-        'id_usuario' => 'required',
+        'id_usuario' => 'required|integer',
+		'id_categoria' => 'permit_empty|integer|is_valid_category'
 	];
 
-	// protected $validationMessages = [
+	public function category(){
 
-	// 	'correo' => [
-	// 		'valid_email' => 'Estimado usuario, debe ingresar '
-	// 	]
+        return $this->belongsTo('id','CategoryModel', 'id_categoria');
 
-	// ];
+    }
+
+	protected $validationMessages = [
+
+		'id_categoria' => [
+			'is_valid_category' => 'El id de la categoría no existe'
+		]
+
+	];
 
 
 }

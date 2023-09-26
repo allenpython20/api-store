@@ -11,7 +11,7 @@ class UserModel extends Model
 	protected $primaryKey           = 'id';
 
 	protected $returnType = 'array';
-
+	protected $allowedFields = ['username','password','email','nombre','id_rol','token'];
     protected $useSoftDeletes = true;
 
 	// Dates
@@ -22,17 +22,22 @@ class UserModel extends Model
 
 	protected $validationRules = [
 
-		'nombre' => 'required',
-		'password' => 'required'
+		'username' => 'required|is_unique[usuario.username,id,{id}]',
+		'password' => 'required|min_length[4]',
+		'id_rol' => 'required|is_valid_rol',
+		'id' => 'permit_empty|integer'
 	];
 
-	// protected $validationMessages = [
+	protected $validationMessages = [
 
-	// 	'correo' => [
-	// 		'valid_email' => 'Estimado usuario, debe ingresar '
-	// 	]
+		'id_rol' => [
+			'is_valid_rol' => 'El id del rol no existe '
+		],
+		'username' => [
+			'is_unique' => 'Ya existe el username ingresado'
+		]
 
-	// ];
+	];
 
 
 }

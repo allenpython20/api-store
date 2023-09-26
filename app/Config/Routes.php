@@ -33,6 +33,15 @@ $routes->group('api/category',['namespace'=>'App\Controllers\API' ],function($ro
 
 });
 
+$routes->group('api/user',['namespace'=>'App\Controllers\API' ],function($routes){
+
+    $routes->get('','User::index',['filter'=>['authFilter','roleFilter:admin']]);
+    $routes->post('create','User::create',['filter'=>['authFilter','roleFilter:admin']]);
+    $routes->put('edit/(:num)','User::edit/$1',['filter'=>['authFilter','roleFilter:admin']]);
+
+
+});
+
 
 $routes->group('auth',['namespace'=>'App\Controllers'],function($routes){
 

@@ -102,10 +102,18 @@ class Category extends ResourceController{
 
             if(!$category) return $this->failValidationErrors("No existe una categoría con id $id ");
 
+            //validar que no existan productos con esa categoría
+
+            $productModel = new ProductModel();
+
+            if( $productModel->where('id_categoria', $id)->countAllResults() > 0)  
+                return $this->respond(["msg" => "No puede eliminar una categoría con productos asignados"]);
+
 
             if($this->model->delete($id)){
               
                 return $this->respondDeleted(["msg" => "La categoría con id $id fue eliminada"]);
+                
             }else{
                 return $this->failValidationErrors($this->model->validation->getErrors());
             }
