@@ -26,7 +26,7 @@ Este proyecto es un REST Server desarrollado en CodeIgniter 4, utilizando PHP 7.
 1. Clona el repositorio en tu entorno local.
 
 ```bash
-git clone https://github.com/tuusuario/tuproyecto.git
+git clone https://github.com/allenpython20/api-store.git
 ```
 2. Ejecuta el siguiente comando en la raíz del proyecto para instalar las dependencias.
 
@@ -34,7 +34,7 @@ git clone https://github.com/tuusuario/tuproyecto.git
 composer install
 ```
 
-3. Configura la base de datos en .env con tus credencialesles.
+3. Configura la base de datos en .env con tus credenciales.
 ```bash
 DB_HOST=tu_host
 DB_DATABASE=tu_base_de_datos
