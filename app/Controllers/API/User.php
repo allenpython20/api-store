@@ -60,7 +60,7 @@ class User extends ResourceController{
 
             $userUpdate = $this->request->getJSON();
             $userUpdate->id = $id;
-
+       
             //validar la contraseña antes de insertar
             $this->verifyPasswordUser($userUpdate);
 
@@ -81,7 +81,7 @@ class User extends ResourceController{
     }
 
     private function verifyPasswordUser($user){
-
+        
         $isValid = $this->model->validate((array)$user);
 
         if (!$isValid) {

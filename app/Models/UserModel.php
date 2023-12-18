@@ -31,7 +31,7 @@ class UserModel extends Model
 	protected $validationMessages = [
 
 		'id_rol' => [
-			'is_valid_rol' => 'El id del rol no existe '
+			'is_valid_rol' => "El id del rol no existe "
 		],
 		'username' => [
 			'is_unique' => 'Ya existe el username ingresado'
